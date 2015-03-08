@@ -1,5 +1,30 @@
 # Android编码规范（持续更新）
 
+
+## 开发环境
+
+* IntelliJ IDEA
+* Android SDK 4.4W （API 20）
+* JDK 1.8
+
+
+## 第三方库
+
+** Base **
+
+* fastjson-android-1.2.4.jar
+* okhttp-2.2.0.jar
+* okio-1.2.0.jar
+* picasso-2.5.0.jar
+* androidannotations-api-3.2.jar
+
+** UI **
+
+* PullToRefresh
+* QuickAdapter
+* PagerSlidingTabStrip
+
+
 ## 命名
 
 
@@ -12,7 +37,7 @@
 
 ### 2. 方法的命名
 
-**规则：** 方法名是一个动词，采用大小写混合的方式，第一个单词的首字母小写，其后单词的首字母大写。
+**规则：** 方法名是一个动词，使用驼峰规则，第一个单词的首字母小写，其后单词的首字母大写。
 **注意：** 减少单词简拼，要做到见词识意，坚决抵制单词拼错。
 
 * 如：public void run(); 
@@ -20,7 +45,7 @@
 
 ### 3. 变量命名
 
-**规则：** 变量命名也必须使用驼峰规则，但是首字母必须小写，变量名尽可能的使用名词或名词词组。同样要求简单易懂，富于描述，不允许出现无意义的单词。
+**规则：** 变使用驼峰规则，但是首字母必须小写，变量名尽可能的使用名词或名词词组。同样要求简单易懂，富于描述，不允许出现无意义的单词。
 
 * 成员变量命名，不要在私有变量前添加m字样
 * 常量命名，全部大写，单词间用下划线隔开
@@ -35,21 +60,23 @@
 
 ### 5. 布局文件中的id命名
 
-**规则：** 使用 **前缀_逻辑名称** 命名。全部单词小写，单词间以下划线分割，并且使用名词或名词词组。
+~~**规则：** 使用 **前缀_逻辑名称** 命名。使用驼峰规则，单词间以下划线分割，并且使用名词或名词词组。~~  `注：引入入androidannotations后，全部统一使用驼峰命名`
+
+**规则：** 使用 **前缀+逻辑名称** 命名。全部单词小写，单词间以下划线分割，并且使用名词或名词词组。
 
 **控件前缀规则：**
 
 ```
-* TextView/EditText: text_
-* Button/RadioButton/ImageButton: btn_
-* ImageView: img_
-* RelativeLayout/LinearLayout: layout_
-* ListView：list_view_
-* WebView: web_view_
+* TextView/EditText: text
+* Button/RadioButton/ImageButton: btn
+* ImageView: img
+* RelativeLayout/LinearLayout: layout
+* ListView：listView
+* WebView: webView
 ```
 
-* 如：TextView @+id/text_title
-* 如：Button @+id/btn_search
+* 如：TextView @+id/textName
+* 如：Button @+id/btnSearch
 
 
 ### 6. 资源文件命名
