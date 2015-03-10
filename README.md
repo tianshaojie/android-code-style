@@ -1,14 +1,14 @@
-# Android编码规范（持续更新）
+# Android-Code-Style
 
 
-## 开发环境
+## IDE
 
 * IntelliJ IDEA
 * Android SDK 4.4W （API 20）
 * JDK 1.8
 
 
-## 第三方库
+## Jars
 
 ** Base **
 
@@ -30,7 +30,7 @@
 
 ###  1. 类和接口命名 
 
-**规则：** 使用 **名词或名词词组** 命名。类名必须使用驼峰规则，即首字母必须大写，如果为词组，则每个单词的首字母也必须要大写。要求类名简单，不允许出现无意义的单词（如 class XXXActivity）。 
+**规则：** 使用 名词或名词词组 命名。类名必须使用驼峰规则，即首字母必须大写，如果为词组，则每个单词的首字母也必须要大写。要求类名简单，不允许出现无意义的单词（如 class XXXActivity）。 
 
 * 如：class BookMarkAdd 正确  
 * 如：class AddBookReadPlan 错误！ 应为 class BookReadPlanAdd 
@@ -102,15 +102,18 @@
 	* 所有意义数字全部抽取到Constant公共类中，避免散布在各位类中。
 5. 控制语句
 	* 减少条件嵌套，不要超过3层
-	* if判断使用“卫语句”，减少层级
+	* if判断使用“卫语句”，减少层级	
+	`
 	if(obj != null) {
 		doSomething();
-	}
-	修改为：
+	}	
+	`	
+	修改为：	
+	`
 	if(obj == null) {
 		return;
 	}
-	doSomething();
+	doSomething();	`
 	* if语句必须用{}包括起来,即便是只有一句
 6. 方法
 	* 拆分臃肿方法，每个方法只作一件事
@@ -118,3 +121,10 @@
 	* 不要使用 try catch 处理业务逻辑
 	* 使用JSON工具类，不要手动解析和拼装数据
 7. 杜绝整个类代码格式化
+
+
+## View project on GitHub
+
+* [https://github.com/tianshaojie/android-code-style](https://github.com/tianshaojie/android-code-style)
+
+
