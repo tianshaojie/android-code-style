@@ -60,7 +60,7 @@
 
 ### 5. 布局文件中的id命名
 
-~~**规则：** 使用 **前缀_逻辑名称** 命名。使用驼峰规则，单词间以下划线分割，并且使用名词或名词词组。~~  `注：引入入androidannotations后，全部统一使用驼峰命名`
+~~**规则：** 使用 **前缀_逻辑名称** 命名。使用驼峰规则，单词间以下划线分割，并且使用名词或名词词组。~~  `注：引入入butterknife后，全部统一使用驼峰命名，**类变量名和布局文件id名称保持一直**，参加下面规则说明。变量名可以让开发人员第一眼就知道这个控件代表什么意思，而不是代表什么控件，也能使命名保持简洁。`
 
 **规则：** 使用 **前缀+逻辑名称** 命名。全部单词小写，单词间以下划线分割，并且使用名词或名词词组。
 
@@ -70,7 +70,7 @@
 * TextView/EditText: ~~ text ~~ 请使用实际意义的名称，前缀多余，如name, title, passowrd
 * Button/RadioButton/ImageButton: btn
 * ImageView: ~~ img ~~ 请使用实际意义的名称，前缀多余，如logo，productImg
-* RelativeLayout/LinearLayout: layout
+* RelativeLayout/LinearLayout: layout，
 * ListView：listView
 * WebView: webView
 ```
