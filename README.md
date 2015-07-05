@@ -67,15 +67,15 @@
 **控件前缀规则：**
 
 ```
-* TextView/EditText: text
+* TextView/EditText: ~~ text ~~ 请使用实际意义的名称，前缀多余，如name, title, passowrd
 * Button/RadioButton/ImageButton: btn
-* ImageView: img
+* ImageView: ~~ img ~~ 请使用实际意义的名称，前缀多余，如logo，productImg
 * RelativeLayout/LinearLayout: layout
 * ListView：listView
 * WebView: webView
 ```
 
-* 如：TextView @+id/textName
+* 如：TextView @+id/name
 * 如：Button @+id/btnSearch
 
 
