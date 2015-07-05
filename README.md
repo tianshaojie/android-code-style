@@ -60,20 +60,24 @@
 
 ### 5. 布局文件中的id命名
 
-~~**规则：** 使用 **前缀_逻辑名称** 命名。使用驼峰规则，单词间以下划线分割，并且使用名词或名词词组。~~  `注：引入入butterknife后，全部统一使用驼峰命名，**类变量名和布局文件id名称保持一直**，参加下面规则说明。变量名可以让开发人员第一眼就知道这个控件代表什么意思，而不是代表什么控件，也能使命名保持简洁。`
+统一使用驼峰命名，**类变量名和布局文件id名称保持一直**
 
-**规则：** 使用 **前缀+逻辑名称** 命名。全部单词小写，单词间以下划线分割，并且使用名词或名词词组。
+~~**规则：** 使用 **前缀_逻辑名称** 命名。使用驼峰规则，单词间以下划线分割，并且使用名词或名词词组。~~  
+
+`注：引入入butterknife后，全部统一使用驼峰命名，**类变量名和布局文件id名称保持一直**，参加下面规则说明。`
+`注：变量名可以让开发人员第一眼就知道这个控件代表什么意思，而不是代表什么控件，也能使命名保持简洁。`
+
+**规则：** 使用 **前缀+逻辑名称** 命名。全部单词小写，单词驼峰命名，**不需要下划线分割**，并且使用名词或名词词组。
 
 **控件前缀规则：**
 
-```
-* TextView/EditText: ~~ text ~~ 请使用实际意义的名称，前缀多余，如name, title, passowrd
+* TextView/EditText: ~~text~~，请使用实际意义的名称，前缀多余，如name, title, passowrd
 * Button/RadioButton/ImageButton: btn
-* ImageView: ~~ img ~~ 请使用实际意义的名称，前缀多余，如logo，productImg
+* ImageView: ~~img~~，请使用实际意义的名称，前缀多余，如logo，productImg
 * RelativeLayout/LinearLayout: layout，
 * ListView：listView
 * WebView: webView
-```
+
 
 * 如：TextView @+id/name
 * 如：Button @+id/btnSearch
@@ -120,7 +124,26 @@
 	* 做同一个逻辑的方法，尽量靠近放到一块，方便查看
 	* 不要使用 try catch 处理业务逻辑
 	* 使用JSON工具类，不要手动解析和拼装数据
-7. 杜绝整个类代码格式化
+7. **杜绝整个类代码格式化**
+8. Activity统一基础BaseFragmentActivity，可以使用bufferknift注解代替findViewById。
+	* onCreate中使用initXX方法，并且方法实现紧跟onCreate，方便查看，查考工程demo。
+	```
+	onCreate {
+		initView();
+		initEvent();
+		initData();
+	}	
+	```
+9. Fragment，可以使用bufferknift注解代替findViewById。
+	* onCreateView初始化View，ButterKnife.bind(this, view);
+	* onActivityCreated中使用initXX方法，并且init方法实现紧跟onActivityCreated，方便查看，查考工程demo。
+	```
+	onActivityCreated {
+		initView();
+		initEvent();
+		initData();
+	}	
+	```
 
 
 ## View project on GitHub
