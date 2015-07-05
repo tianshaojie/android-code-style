@@ -383,22 +383,25 @@ sup {
 
 <h3>5. 布局文件中的id命名</h3>
 
-<p><del><strong>规则：</strong> 使用 <strong>前缀_逻辑名称</strong> 命名。使用驼峰规则，单词间以下划线分割，并且使用名词或名词词组。</del>  <code>注：引入入butterknife后，全部统一使用驼峰命名，**类变量名和布局文件id名称保持一直**，参加下面规则说明。变量名可以让开发人员第一眼就知道这个控件代表什么意思，而不是代表什么控件，也能使命名保持简洁。</code></p>
+<p>统一使用驼峰命名，<strong>类变量名和布局文件id名称保持一直</strong></p>
 
-<p><strong>规则：</strong> 使用 <strong>前缀+逻辑名称</strong> 命名。全部单词小写，单词间以下划线分割，并且使用名词或名词词组。</p>
+<p><del><strong>规则：</strong> 使用 <strong>前缀_逻辑名称</strong> 命名。使用驼峰规则，单词间以下划线分割，并且使用名词或名词词组。</del></p>
+
+<p><code>注：引入入butterknife后，全部统一使用驼峰命名，**类变量名和布局文件id名称保持一直**，参加下面规则说明。</code>
+<code>注：变量名可以让开发人员第一眼就知道这个控件代表什么意思，而不是代表什么控件，也能使命名保持简洁。</code></p>
+
+<p><strong>规则：</strong> 使用 <strong>前缀+逻辑名称</strong> 命名。全部单词小写，单词驼峰命名，<strong>不需要下划线分割</strong>，并且使用名词或名词词组。</p>
 
 <p><strong>控件前缀规则：</strong></p>
 
-<pre><code>* TextView/EditText: ~~ text ~~ 请使用实际意义的名称，前缀多余，如name, title, passowrd
-* Button/RadioButton/ImageButton: btn
-* ImageView: ~~ img ~~ 请使用实际意义的名称，前缀多余，如logo，productImg
-* RelativeLayout/LinearLayout: layout，
-* ListView：listView
-* WebView: webView
-</code></pre>
-
 <ul>
-<li>如：TextView @+id/name</li>
+<li>TextView/EditText: <del>text</del>，请使用实际意义的名称，前缀多余，如name, title, passowrd</li>
+<li>Button/RadioButton/ImageButton: btn</li>
+<li>ImageView: <del>img</del>，请使用实际意义的名称，前缀多余，如logo，productImg</li>
+<li>RelativeLayout/LinearLayout: layout，</li>
+<li>ListView：listView</li>
+<li><p>WebView: webView</p></li>
+<li><p>如：TextView @+id/name</p></li>
 <li>如：Button @+id/btnSearch</li>
 </ul>
 
@@ -468,7 +471,34 @@ doSomething(); </code></li>
 <li>使用JSON工具类，不要手动解析和拼装数据</li>
 </ul>
 </li>
-<li>杜绝整个类代码格式化</li>
+<li><strong>杜绝整个类代码格式化</strong></li>
+<li>Activity统一基础BaseFragmentActivity，可以使用bufferknift注解代替findViewById。
+
+<ul>
+<li>onCreate中使用initXX方法，并且方法实现紧跟onCreate，方便查看，查考工程demo。
+<code>
+onCreate {
+  initView();
+  initEvent();
+  initData();
+}   
+</code></li>
+</ul>
+</li>
+<li>Fragment，可以使用bufferknift注解代替findViewById。
+
+<ul>
+<li>onCreateView初始化View，ButterKnife.bind(this, view);</li>
+<li>onActivityCreated中使用initXX方法，并且init方法实现紧跟onActivityCreated，方便查看，查考工程demo。
+<code>
+onActivityCreated {
+  initView();
+  initEvent();
+  initData();
+}   
+</code></li>
+</ul>
+</li>
 </ol>
 
 
