@@ -308,128 +308,17 @@ sup {
 <body>
 <h1>Android-Code-Style</h1>
 
-<h2>IDE</h2>
-
-<ul>
-<li>IntelliJ IDEA</li>
-<li>Android SDK 4.4W （API 20）</li>
-<li>JDK 1.8</li>
-</ul>
-
-
-<h2>Jars</h2>
-
-<p><strong> Base </strong></p>
-
-<ul>
-<li>fastjson-android-1.2.4.jar</li>
-<li>okhttp-2.2.0.jar</li>
-<li>okio-1.2.0.jar</li>
-<li>picasso-2.5.0.jar</li>
-<li>androidannotations-api-3.2.jar</li>
-</ul>
-
-
-<p><strong> UI </strong></p>
-
-<ul>
-<li>PullToRefresh</li>
-<li>QuickAdapter</li>
-<li>PagerSlidingTabStrip</li>
-</ul>
-
-
-<h2>命名</h2>
-
-<h3>1. 类和接口命名</h3>
-
-<p><strong>规则：</strong> 使用 名词或名词词组 命名。类名必须使用驼峰规则，即首字母必须大写，如果为词组，则每个单词的首字母也必须要大写。要求类名简单，不允许出现无意义的单词（如 class XXXActivity）。</p>
-
-<ul>
-<li>如：class BookMarkAdd 正确</li>
-<li>如：class AddBookReadPlan 错误！ 应为 class BookReadPlanAdd</li>
-</ul>
-
-
-<h3>2. 方法的命名</h3>
-
-<p><strong>规则：</strong> 方法名是一个动词，使用驼峰规则，第一个单词的首字母小写，其后单词的首字母大写。
-<strong>注意：</strong> 减少单词简拼，要做到见词识意，坚决抵制单词拼错。</p>
-
-<ul>
-<li>如：public void run();</li>
-<li>如：public String getBookName();</li>
-</ul>
-
-
-<h3>3. 变量命名</h3>
-
-<p><strong>规则：</strong> 变使用驼峰规则，但是首字母必须小写，变量名尽可能的使用名词或名词词组。同样要求简单易懂，富于描述，不允许出现无意义的单词。</p>
-
-<ul>
-<li>成员变量命名，不要在私有变量前添加m字样</li>
-<li>常量命名，全部大写，单词间用下划线隔开</li>
-</ul>
-
-
-<h3>4. 布局文件命名</h3>
-
-<p><strong>规则：</strong> Activity对应的布局，使用 <strong>模块名(包名)_类名称</strong>命名。全部单词小写，单词间以下划线分割，并且使用名词或名词词组。类名称单词拆开后使用下划线连接。</p>
-
-<ul>
-<li>如：PublishActivity: circle_publish.xml</li>
-</ul>
-
-
-<h3>5. 布局文件中的id命名</h3>
-
-<p>统一使用驼峰命名，<strong>类变量名和布局文件id名称保持一直</strong></p>
-
-<p><del><strong>规则：</strong> 使用 <strong>前缀_逻辑名称</strong> 命名。使用驼峰规则，单词间以下划线分割，并且使用名词或名词词组。</del></p>
-
-<p><code>注：引入入butterknife后，全部统一使用驼峰命名，**类变量名和布局文件id名称保持一直**，参加下面规则说明。</code>
-<code>注：变量名可以让开发人员第一眼就知道这个控件代表什么意思，而不是代表什么控件，也能使命名保持简洁。</code></p>
-
-<p><strong>规则：</strong> 使用 <strong>前缀+逻辑名称</strong> 命名。全部单词小写，单词驼峰命名，<strong>不需要下划线分割</strong>，并且使用名词或名词词组。</p>
-
-<p><strong>控件前缀规则：</strong></p>
-
-<ul>
-<li>TextView/EditText: <del>text</del>，请使用实际意义的名称，前缀多余，如name, title, passowrd</li>
-<li>Button/RadioButton/ImageButton: btn</li>
-<li>ImageView: <del>img</del>，请使用实际意义的名称，前缀多余，如logo，productImg</li>
-<li>RelativeLayout/LinearLayout: layout，</li>
-<li>ListView：listView</li>
-<li><p>WebView: webView</p></li>
-<li><p>如：TextView @+id/name</p></li>
-<li>如：Button @+id/btnSearch</li>
-</ul>
-
-
-<h3>6. 资源文件命名</h3>
-
-<p><strong>规则：</strong> 使用 <strong>模块名_用途</strong> 来命名。layout中所使用的所有资源（如drawable,style等）命名必须以全部单词小写，单词间以下划线分割，并且尽可能的使用名词或名词组，如果为公共资源，如分割线等，则直接用用途来命名</p>
-
-<ul>
-<li>如：circle_search_icon_selector.xml</li>
-<li>如：某分割线，line.png  或 separator.png</li>
-</ul>
-
-
 <h2>约定</h2>
 
-<ol>
-<li>缩进：统一调整IDE的Tab缩进为4空格</li>
-<li>空行：空行将逻辑相关代码段隔开，简洁清楚，提高可读性
-
 <ul>
-<li>每个成员变量之间不需要空行，根据业务形成分组，然后加空行</li>
-<li>两个方法之间支架一行空行</li>
-<li>如：定义的intent变量为一组，下面加空行</li>
-<li>如：控件变量为一组，下面加空行</li>
-</ul>
-</li>
-<li>用好TODO
+<li><strong>Activity.onCreate()，Fragment.onActivityCreated()，作为程序入口，不用写入太多代码，尽量保持只调用initXXX()方法，简单明了展示调用过程。如：initData()，initView()。</strong></li>
+<li><strong>单个方法体不要过长</strong></li>
+<li><strong>代码任何地方不要拼错单词</strong></li>
+<li><strong>杜绝整个类代码格式化</strong></li>
+<li>调用方法保持“临近原则”，被调用的方法，放在调用方法下方</li>
+<li>统一调整IDE的Tab缩进为4个空格</li>
+<li>空行的使用，拒绝拖沓无分割，关联代码段放一块并与后面代码分割</li>
+<li>用好TODO标记
 
 <ul>
 <li>记录想法，记录功能点，开发过程中可以利用TODO记录一下临时想法或为了不打扰思路留下待完善的说明</li>
@@ -441,6 +330,114 @@ sup {
 <ul>
 <li>代码中不要出现数字，特别是一些标识不同类型的数字。</li>
 <li>所有意义数字全部抽取到Constant公共类中，避免散布在各位类中。</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>命名</h2>
+
+<h3>1. 布局文件中的id命名</h3>
+
+<p><strong>规则：使用驼峰命名，前缀+逻辑名称，类变量名和布局文件id名称保持一致，不需要下划线分割</strong></p>
+
+<p><strong>控件前缀规则：</strong></p>
+
+<ul>
+<li>TextView/EditText: text</li>
+<li>Button/RadioButton/ImageButton: btn</li>
+<li>ImageView: img</li>
+<li>RelativeLayout/LinearLayout/FrameLayout: layout，</li>
+<li>ListView: listView</li>
+<li>WebView: webView</li>
+<li><p>CheckBox: chBox</p></li>
+<li><p>如：TextView @+id/textTitle</p></li>
+<li>如：EditView @+id/textName</li>
+<li>如：Button @+id/btnSearch</li>
+</ul>
+
+
+<h3>2. 布局文件命名</h3>
+
+<p><strong>规则：</strong> 使用<strong>前缀_逻辑名称</strong>命名，单词全部小写，单词间以 下划线 分割。</p>
+
+<p><strong>前缀规则：</strong></p>
+
+<ul>
+<li>Activity对应的布局使用activity_</li>
+<li><p>Fragment对应的布局使用fragment_</p></li>
+<li><p>如：PublishActivity: activity_publish.xml</p></li>
+</ul>
+
+
+<h3>3. 资源文件命名</h3>
+
+<p><strong>规则：</strong> 使用 <strong>前缀_用途</strong> 命名，单词全部小写，单词间以 下划线 分割。</p>
+
+<ul>
+<li><p>drawable：</p>
+
+<ul>
+<li>btn_back_selector.xml     控件前缀命名</li>
+<li>common_circle_gray.xml    通用资源多处使用common_</li>
+<li>chat_image_selector.xml   功能相关业务使用加用途前缀</li>
+</ul>
+</li>
+<li><p>drawable_hdpi：</p>
+
+<ul>
+<li>btn_back_normal.9.png     控件前缀名称</li>
+<li>btn_back_press.9.png      控件前缀名称</li>
+<li>icon_login_lock.png       icon_+用途</li>
+</ul>
+</li>
+<li><p>values/color：</p>
+
+<ul>
+<li>pull_refresh_attrs.xml    引入的第三方资源，携带资源简拼的前缀</li>
+</ul>
+</li>
+</ul>
+
+
+<h3>4. 类和接口命名</h3>
+
+<p><strong>规则：</strong> 使用驼峰规则，首字母必须大写，使用名词或名词词组。要求简单易懂，富于描述，不允许出现无意义或错误单词。</p>
+
+<ul>
+<li>如：class BookMarkAdd 正确</li>
+<li>如：class AddBookReadPlan 错误！ 应为 class BookReadPlanAdd</li>
+</ul>
+
+
+<h3>5. 方法的命名</h3>
+
+<p><strong>规则：</strong> 使用驼峰规则，首字母必须小写，使用动词。要求简单易懂，富于描述，不允许出现无意义或错误单词。</p>
+
+<ul>
+<li>如：public void run();</li>
+<li>如：public String getBookName();</li>
+</ul>
+
+
+<h3>6. 变量命名</h3>
+
+<p><strong>规则：</strong> 使用驼峰规则，首字母必须小写，使用名词或名词词组。要求简单易懂，富于描述，不允许出现无意义或错误单词。</p>
+
+<ul>
+<li>成员变量命名，不要在私有变量前添加m字样</li>
+<li>常量命名，全部大写，单词间用下划线隔开</li>
+</ul>
+
+
+<h2>其他</h2>
+
+<ul>
+<li>空行：空行将逻辑相关代码段隔开，简洁清楚，提高可读性
+
+<ul>
+<li>成员变量之间，根据业务形成分组加空行</li>
+<li>方法之间加空行</li>
 </ul>
 </li>
 <li>控制语句
@@ -471,35 +468,46 @@ doSomething(); </code></li>
 <li>使用JSON工具类，不要手动解析和拼装数据</li>
 </ul>
 </li>
-<li><strong>杜绝整个类代码格式化</strong></li>
-<li>Activity统一基础BaseFragmentActivity，可以使用bufferknift注解代替findViewById。
+<li>Activity继承BaseFragmentActivity或SwipeBackActivity，可以使用ButterKnife注解代替findViewById。</li>
+</ul>
+
+
+<h2>IDE</h2>
 
 <ul>
-<li>onCreate中使用initXX方法，并且方法实现紧跟onCreate，方便查看，查考工程demo。
-<code>
-onCreate {
-  initView();
-  initEvent();
-  initData();
-}   
-</code></li>
+<li>Android Studio (越早使用越好)</li>
+<li>Android SDK 4.4W （API 20 统一开发版本）</li>
+<li>JDK 1.8（统一开发版本）</li>
 </ul>
-</li>
-<li>Fragment，可以使用bufferknift注解代替findViewById。
+
+
+<h2>Libraries</h2>
+
+<p><strong> Base </strong></p>
 
 <ul>
-<li>onCreateView初始化View，ButterKnife.bind(this, view);</li>
-<li>onActivityCreated中使用initXX方法，并且init方法实现紧跟onActivityCreated，方便查看，查考工程demo。
-<code>
-onActivityCreated {
-  initView();
-  initEvent();
-  initData();
-}   
-</code></li>
+<li>fastjson-android-1.2.4.jar</li>
+<li>okhttp-2.2.0.jar</li>
+<li>okio-1.2.0.jar</li>
+<li>picasso-2.5.0.jar</li>
+<li>butterknife:7.0.1</li>
+<li>ormlite-android:4.48</li>
 </ul>
-</li>
-</ol>
+
+
+<p><strong> UI </strong></p>
+
+<ul>
+<li>PullToRefresh</li>
+<li>QuickAdapter</li>
+<li>PagerSlidingTabStrip</li>
+<li>SystemBarTint     状态栏以及导航栏设置背景颜色</li>
+<li>SwipeBackLayout   左滑返回</li>
+<li>PullToZoomView    可以下拉缩放HeaderView</li>
+<li>AutoLoopViewPager 轮播图</li>
+<li>PhotoView</li>
+<li>ViewPageIndicator</li>
+</ul>
 
 
 <h2>View project on GitHub</h2>
