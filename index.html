@@ -308,136 +308,347 @@ sup {
 <body>
 <h1>Android-Code-Style</h1>
 
-<h2>约定</h2>
+<h2>1. 约定</h2>
 
 <ul>
-<li><strong>Activity.onCreate()，Fragment.onActivityCreated()，作为程序入口，不用写入太多代码，尽量保持只调用initXXX()方法，简单明了展示调用过程。如：initData()，initView()。</strong></li>
+<li><strong>Activity.onCreate()，Fragment.onActivityCreated()，紧跟成员变量后，方法内部保持简单，尽量只调用initXXX()方法，如：initData()，initView()。</strong></li>
+<li>调用方法保持<strong>“临近原则”</strong>，被调用的方法，放在调用方法下方</li>
 <li><strong>单个方法体不要过长</strong></li>
 <li><strong>代码任何地方不要拼错单词</strong></li>
-<li><strong>杜绝整个类代码格式化</strong></li>
-<li>调用方法保持“临近原则”，被调用的方法，放在调用方法下方</li>
 <li>统一调整IDE的Tab缩进为4个空格</li>
-<li>空行的使用，拒绝拖沓无分割，关联代码段放一块并与后面代码分割</li>
-<li>用好TODO标记
-
-<ul>
-<li>记录想法，记录功能点，开发过程中可以利用TODO记录一下临时想法或为了不打扰思路留下待完善的说明</li>
-<li>删除无用TODO，开发工具自动生成的TODO，或则已经完善的TODO，一定要删除。</li>
-</ul>
-</li>
-<li>处理“魔数”等看不懂的神秘数字
-
-<ul>
-<li>代码中不要出现数字，特别是一些标识不同类型的数字。</li>
-<li>所有意义数字全部抽取到Constant公共类中，避免散布在各位类中。</li>
-</ul>
-</li>
+<li><strong>杜绝整个类代码格式化</strong></li>
 </ul>
 
 
-<h2>命名</h2>
+<h2>2. 命名</h2>
 
-<h3>1. 布局文件中的id命名</h3>
+<h3>2.1. 布局文件中的id命名</h3>
 
 <p><strong>规则：使用驼峰命名，前缀+逻辑名称，类变量名和布局文件id名称保持一致，不需要下划线分割</strong></p>
 
-<p><strong>控件前缀规则：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">控件  </th>
+<th align="left"> 缩写前缀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">TextView/EditText   </td>
+<td align="left"> text</td>
+</tr>
+<tr>
+<td align="left">ImageView           </td>
+<td align="left"> img</td>
+</tr>
+<tr>
+<td align="left">Button/RadioButton/ImageButton </td>
+<td align="left"> btn</td>
+</tr>
+<tr>
+<td align="left">RelativeLayout/LinearLayout/FrameLayout </td>
+<td align="left"> layout</td>
+</tr>
+<tr>
+<td align="left">ListView    </td>
+<td align="left"> listView</td>
+</tr>
+<tr>
+<td align="left">WebView     </td>
+<td align="left"> webView</td>
+</tr>
+<tr>
+<td align="left">CheckBox    </td>
+<td align="left"> checkBox</td>
+</tr>
+<tr>
+<td align="left">ProgressBar </td>
+<td align="left"> progressBar</td>
+</tr>
+<tr>
+<td align="left">seekBar     </td>
+<td align="left"> seekBar</td>
+</tr>
+<tr>
+<td align="left">其他控件    </td>
+<td align="left"> 控件名首字母缩写作为前缀</td>
+</tr>
+</tbody>
+</table>
+
 
 <ul>
-<li>TextView/EditText: text</li>
-<li>Button/RadioButton/ImageButton: btn</li>
-<li>ImageView: img</li>
-<li>RelativeLayout/LinearLayout/FrameLayout: layout，</li>
-<li>ListView: listView</li>
-<li>WebView: webView</li>
-<li><p>CheckBox: chBox</p></li>
-<li><p>如：TextView @+id/textTitle</p></li>
+<li>如：TextView @+id/textTitle</li>
 <li>如：EditView @+id/textName</li>
 <li>如：Button @+id/btnSearch</li>
 </ul>
 
 
-<h3>2. 布局文件命名</h3>
+<h3>2.2. 布局文件命名</h3>
 
 <p><strong>规则：</strong> 使用<strong>前缀_逻辑名称</strong>命名，单词全部小写，单词间以 下划线 分割。</p>
 
-<p><strong>前缀规则：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">布局类型    </th>
+<th align="left"> 布局前缀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Activity    </td>
+<td align="left"> activity_</td>
+</tr>
+<tr>
+<td align="left">Fragment    </td>
+<td align="left"> fragment_</td>
+</tr>
+<tr>
+<td align="left">Include     </td>
+<td align="left"> include_</td>
+</tr>
+<tr>
+<td align="left">Dialog      </td>
+<td align="left"> dialog_</td>
+</tr>
+<tr>
+<td align="left">PopupWindow </td>
+<td align="left"> popup_</td>
+</tr>
+<tr>
+<td align="left">Menu        </td>
+<td align="left"> menu_</td>
+</tr>
+<tr>
+<td align="left">Adapter     </td>
+<td align="left"> layout_item_</td>
+</tr>
+</tbody>
+</table>
 
-<ul>
-<li>Activity对应的布局使用activity_</li>
-<li><p>Fragment对应的布局使用fragment_</p></li>
-<li><p>如：PublishActivity: activity_publish.xml</p></li>
-</ul>
 
-
-<h3>3. 资源文件命名</h3>
+<h3>2.3. 资源文件命名</h3>
 
 <p><strong>规则：</strong> 使用 <strong>前缀_用途</strong> 命名，单词全部小写，单词间以 下划线 分割。</p>
 
 <ul>
-<li><p>drawable：</p>
+<li>图片资源文件命名</li>
+</ul>
+
+
+<table>
+<thead>
+<tr>
+<th align="left">前缀  </th>
+<th align="left"> 说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">bg_xxx      </td>
+<td align="left"> 各类背景图片</td>
+</tr>
+<tr>
+<td align="left">btn_xxx     </td>
+<td align="left"> 这种按钮没有其他状态</td>
+</tr>
+<tr>
+<td align="left">ic_xxx      </td>
+<td align="left"> 图标，一般用于单个图标</td>
+</tr>
+<tr>
+<td align="left"><code>bg_描述_状态1[_状态2]</code>   </td>
+<td align="left"> 用于控件上的不同状态</td>
+</tr>
+<tr>
+<td align="left"><code>btn_描述_状态1[_状态2]</code>  </td>
+<td align="left"> 用于按钮上的不同状态</td>
+</tr>
+<tr>
+<td align="left"><code>chx_描述_状态1[_状态2]</code>  </td>
+<td align="left"> 选择框，一般有2态和4态</td>
+</tr>
+</tbody>
+</table>
+
 
 <ul>
-<li>btn_back_selector.xml     控件前缀命名</li>
-<li>common_circle_gray.xml    通用资源多处使用common_</li>
-<li>chat_image_selector.xml   功能相关业务使用加用途前缀</li>
-</ul>
-</li>
-<li><p>drawable_hdpi：</p>
-
-<ul>
-<li>btn_back_normal.9.png     控件前缀名称</li>
-<li>btn_back_press.9.png      控件前缀名称</li>
-<li>icon_login_lock.png       icon_+用途</li>
-</ul>
-</li>
-<li><p>values/color：</p>
-
-<ul>
-<li>pull_refresh_attrs.xml    引入的第三方资源，携带资源简拼的前缀</li>
-</ul>
-</li>
+<li>第三方资源文件，不管在value、drawable</li>
 </ul>
 
 
-<h3>4. 类和接口命名</h3>
+<table>
+<thead>
+<tr>
+<th>必须携带第三方资源前缀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>umeng_socialize_style.xml </td>
+</tr>
+<tr>
+<td>pull_refresh_attrs.xml </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>2.4. 类和接口命名</h3>
 
 <p><strong>规则：</strong> 使用驼峰规则，首字母必须大写，使用名词或名词词组。要求简单易懂，富于描述，不允许出现无意义或错误单词。</p>
 
-<ul>
-<li>如：class BookMarkAdd 正确</li>
-<li>如：class AddBookReadPlan 错误！ 应为 class BookReadPlanAdd</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th align="left">类 </th>
+<th align="left"> 描述    </th>
+<th align="left"> 例如</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Application类  </td>
+<td align="left"> Application为后缀标识 </td>
+<td align="left">XXXApplication</td>
+</tr>
+<tr>
+<td align="left">Activity类 </td>
+<td align="left"> Activity为后缀标识 </td>
+<td align="left"> 闪屏页面类SplashActivity</td>
+</tr>
+<tr>
+<td align="left">解析类       </td>
+<td align="left"> Handler为后缀标识</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">公共方法类 </td>
+<td align="left"> Utils或Manager为后缀标识</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">线程池管理类  </td>
+<td align="left"> ThreadPoolManager</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">日志工具类 </td>
+<td align="left"> LogUtils</td>
+<td></td>
+</tr>
+<tr>
+<td align="left">数据库类    </td>
+<td align="left"> 以DBHelper后缀标识 </td>
+<td align="left"> MySQLiteDBHelper</td>
+</tr>
+<tr>
+<td align="left">Service类  </td>
+<td align="left"> 以Service为后缀标识 </td>
+<td align="left"> 播放服务：PlayService</td>
+</tr>
+<tr>
+<td align="left">BroadcastReceiver类 </td>
+<td align="left"> 以Broadcast为后缀标识 </td>
+<td align="left"> 时间通知：TimeBroadcast</td>
+</tr>
+<tr>
+<td align="left">ContentProvider类 </td>
+<td align="left"> 以Provider为后缀标识 </td>
+<td align="left"> 单词内容提供者：DictProvider</td>
+</tr>
+<tr>
+<td align="left">直接写的共享基础类 </td>
+<td align="left"> 以Base为前缀 </td>
+<td align="left"> BaseActivity,BaseFragment</td>
+</tr>
+</tbody>
+</table>
 
 
-<h3>5. 方法的命名</h3>
+<h3>2.5. 方法的命名</h3>
 
 <p><strong>规则：</strong> 使用驼峰规则，首字母必须小写，使用动词。要求简单易懂，富于描述，不允许出现无意义或错误单词。</p>
 
-<ul>
-<li>如：public void run();</li>
-<li>如：public String getBookName();</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>方法  </th>
+<th> 说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>initXX()    </td>
+<td> 初始化相关方法，使用init为前缀标识，如初始化布局initView()</td>
+</tr>
+<tr>
+<td>httpXX()    </td>
+<td> http业务请求方法，以http为前缀标识</td>
+</tr>
+<tr>
+<td>getXX()     </td>
+<td> 返回某个值的方法，使用get为前缀标识</td>
+</tr>
+<tr>
+<td>saveXX()    </td>
+<td> 与保存数据相关的，使用save为前缀标识</td>
+</tr>
+<tr>
+<td>deleteXX()  </td>
+<td> 删除操作</td>
+</tr>
+<tr>
+<td>resetXX()   </td>
+<td> 对数据重组的，使用reset前缀标识</td>
+</tr>
+<tr>
+<td>clearXX()   </td>
+<td> 清除数据相关的</td>
+</tr>
+<tr>
+<td>isXX()      </td>
+<td> 方法返回值为boolean型的请使用is或check为前缀标识</td>
+</tr>
+<tr>
+<td>processXX() </td>
+<td> 对数据进行处理的方法，尽量使用process为前缀标识</td>
+</tr>
+<tr>
+<td>displayXX() </td>
+<td> 弹出提示框和提示信息，使用display为前缀标识</td>
+</tr>
+<tr>
+<td>drawXXX()   </td>
+<td> 绘制数据或效果相关的，使用draw前缀标识</td>
+</tr>
+</tbody>
+</table>
 
 
-<h3>6. 变量命名</h3>
+<h3>2.6. 变量命名</h3>
 
 <p><strong>规则：</strong> 使用驼峰规则，首字母必须小写，使用名词或名词词组。要求简单易懂，富于描述，不允许出现无意义或错误单词。</p>
 
 <ul>
-<li>成员变量命名，不要在私有变量前添加m字样</li>
+<li>成员变量命名，自定义变量前添加m前缀，布局控件变量不用添加m前缀</li>
 <li>常量命名，全部大写，单词间用下划线隔开</li>
 </ul>
 
 
-<h2>其他</h2>
+<h2>3. 其他规范</h2>
 
 <ul>
-<li>空行：空行将逻辑相关代码段隔开，简洁清楚，提高可读性
+<li>Activity继承BaseFragmentActivity或SwipeBackActivity，可以使用ButterKnife注解代替findViewById</li>
+<li>方法
 
 <ul>
-<li>成员变量之间，根据业务形成分组加空行</li>
-<li>方法之间加空行</li>
+<li>拆分臃肿方法，每个方法只作一件事</li>
+<li>做同一个逻辑的方法，尽量靠近放到一块，方便查看</li>
+<li>不要使用 try catch 处理业务逻辑</li>
+<li>使用JSON工具类，不要手动解析和拼装数据</li>
 </ul>
 </li>
 <li>控制语句
@@ -459,29 +670,40 @@ doSomething(); </code></li>
 <li>if语句必须用{}包括起来,即便是只有一句</li>
 </ul>
 </li>
-<li>方法
+<li>处理“魔数”等看不懂的神秘数字
 
 <ul>
-<li>拆分臃肿方法，每个方法只作一件事</li>
-<li>做同一个逻辑的方法，尽量靠近放到一块，方便查看</li>
-<li>不要使用 try catch 处理业务逻辑</li>
-<li>使用JSON工具类，不要手动解析和拼装数据</li>
+<li>代码中不要出现数字，特别是一些标识不同类型的数字。</li>
+<li>所有意义数字全部抽取到Constant公共类中，避免散布在各位类中。</li>
 </ul>
 </li>
-<li>Activity继承BaseFragmentActivity或SwipeBackActivity，可以使用ButterKnife注解代替findViewById。</li>
+<li>空行：空行将逻辑相关代码段隔开，简洁清楚，提高可读性
+
+<ul>
+<li>成员变量之间，根据业务形成分组加空行</li>
+<li>方法之间加空行</li>
+</ul>
+</li>
+<li>用好TODO标记
+
+<ul>
+<li>记录想法，记录功能点，开发过程中可以利用TODO记录一下临时想法或为了不打扰思路留下待完善的说明</li>
+<li>删除无用TODO，开发工具自动生成的TODO，或则已经完善的TODO，一定要删除。</li>
+</ul>
+</li>
 </ul>
 
 
-<h2>IDE</h2>
+<h2>4. IDE</h2>
 
 <ul>
 <li>Android Studio (越早使用越好)</li>
-<li>Android SDK 4.4W （API 20 统一开发版本）</li>
-<li>JDK 1.8（统一开发版本）</li>
+<li>Android SDK API 20（根据项目约定）</li>
+<li>JDK 1.8（根据项目约定）</li>
 </ul>
 
 
-<h2>Libraries</h2>
+<h2>5. Libraries</h2>
 
 <p><strong> Base </strong></p>
 
